@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "TList.cpp"
-#include "TStack.cpp"
+#include "../sources/TList.cpp"
+#include "../sources/TStack.cpp"
 
 int main(){
 

@@ -1,7 +1,7 @@
 #ifndef TLIST_H_INCLUDED
 #define TLIST_H_INCLUDED
 
-#include "TTie.h"
+#include "../headers/TTie.h"
 
 template <typename T> class TList{
 

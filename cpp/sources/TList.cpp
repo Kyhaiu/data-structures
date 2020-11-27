@@ -1,18 +1,18 @@
 #include <iostream>
 
 #include "../headers/TList.h"
-#include "TTie.cpp"
+#include "../sources/TTie.cpp"
 
 template <typename T> TList<T>::TList(){
-    TList<T>::setHead(nullptr);
-    TList<T>::setTail(nullptr);
+    TList<T>::setHead(NULL);
+    TList<T>::setTail(NULL);
     _size = 0;
 }
 
 template <typename T> TList<T>::TList(TTie<T>* _head, TTie<T>* _tail){
     TList<T>::setHead(_head);
     TList<T>::setTail(_tail);
-    if(_head != nullptr and _tail != nullptr){
+    if(_head != NULL and _tail != NULL){
         _size = 1;
     } else{
         _size = 0;

@@ -1,7 +1,7 @@
 #ifndef TSTACK_H_INCLUDED
 #define TSTACK_H_INCLUDED
 
-#include "TList.h"
+#include "../headers/TList.h"
 
 template <typename T> class TStack{
 
