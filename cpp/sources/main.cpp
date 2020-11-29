@@ -2,6 +2,7 @@
 
 #include "../sources/TList.cpp"
 #include "../sources/TStack.cpp"
+#include "../sources/TQueue.cpp"
 
 int main(){
 
@@ -13,6 +14,8 @@ int main(){
     lista->insertEnd(x);
     x++;
     lista->insertEnd(x);
+    
+    std::cout << "Lista simplesmente encadeada" << std::endl;
     lista->printl();
 
     TStack<int>* stack = new TStack<int>();
@@ -24,12 +27,27 @@ int main(){
     x++;
     stack->push(x);
 
+    std::cout << "Pilha" << std::endl;
     std::cout << stack->top() << " ";
     stack->pop();
     std::cout << stack->top() << " ";
     stack->pop();
-    std::cout << stack->top() << " ";
+    std::cout << stack->top() << "\n";
     stack->pop();
+
+    TQueue<int>* queue = new TQueue<int>();
+
+    x = 1;
+    queue->enqueue(x);
+    x++;
+    queue->enqueue(x);
+    x++;
+    queue->enqueue(x);
+    
+    std::cout << "Fila" << std::endl;
+    std::cout << queue->dequeue() << " ";
+    std::cout << queue->dequeue() << " ";
+    std::cout << queue->dequeue() << " ";
 
     return 0;
 }
