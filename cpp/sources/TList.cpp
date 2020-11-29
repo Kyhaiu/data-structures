@@ -51,52 +51,63 @@ template <typename T> void TList<T>::updateSize(int _newSize){
     _size += _newSize;
 }
 
-template <typename T> void TList<T>::insertBegin(T _info){    
-    TTie<T>* tie =  new TTie<T>(_info, nullptr);
+template <typename T> void TList<T>::insertBegin(T _info){
+    //cria um novo nó que sera o inicio da lista(head)    
+    TTie<T>* tie =  new TTie<T>(_info, NULL, NULL);
     
+    //caso a lista seja vazia, apenas altera-se a head e tail.
     if (getHead() == nullptr){
         TList<T>::setHead(tie);
         TList<T>::setTail(tie);
         updateSize(1);
     } else{
-        TTie<T>* oldHead = getHead();
+        TTie<T>* oldHead = TList<T>::getHead();
         tie->setNext(oldHead);
+        oldHead->setPrevious(tie);
         TList<T>::setHead(tie);
         TList<T>::updateSize(1);
     }
 }
 
-template <typename T> void TList<T>::insertEnd(T _info){    
-    TTie<T>* tie =  new TTie<T>(_info, nullptr);
+template <typename T> void TList<T>::insertEnd(T _info){
+    //cria um novo nó que sera inserido no final da lista  
+    TTie<T>* tie =  new TTie<T>(_info, NULL, NULL);
     
-    if (getHead() == nullptr){
+    //caso a lista seja vazia, apenas altera-se a head e tail.
+    if (getTail() == nullptr){
         TList<T>::setHead(tie);
         TList<T>::setTail(tie);
         updateSize(1);
     } else{
-        TTie<T>* element = getHead();
-
-        while(element->getNext() != nullptr){
-            element = element->getNext();
-        }
-
-        element->setNext(tie);
+        TTie<T>* oldTail = getTail();
+        //faz a antiga tail referenciar sua sucessora.
+        oldTail->setNext(tie);
+        //faz a nova cauda referenciar a sua antecessora.
+        tie->setPrevious(oldTail);
+        //Atualiza a referencia da cauda
+        TList<T>::setTail(tie);
         updateSize(1);
     }
 }
 
 template <typename T> void TList<T>::removeBegin(){
-    TTie<T>* oldHead = getHead();
-    setHead(oldHead->getNext());
+    TTie<T>* oldHead = TList<T>::getHead();
+    TTie<T>* newHead = TList<T>::getHead()->getNext();
 
+    if(newHead == NULL){
+        return;
+    }
+    newHead->setPrevious(NULL);
+
+    TList<T>::setHead(newHead);
     delete oldHead;
 }
 
 template <typename T> void TList<T>::printl(){
-    TTie<T>* element = getHead();
+    TTie<T>* element = TList<T>::getTail();
 
-    while (element != nullptr){
+    while (element != NULL){
         std::cout << element->getValue() << std::endl;
-        element = element->getNext();
+        element = element->getPrevious();
     }
 }

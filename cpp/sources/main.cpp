@@ -18,6 +18,8 @@ int main(){
     std::cout << "Lista simplesmente encadeada" << std::endl;
     lista->printl();
 
+    delete lista;
+
     TStack<int>* stack = new TStack<int>();
 
     x = 1;
@@ -34,6 +36,8 @@ int main(){
     stack->pop();
     std::cout << stack->top() << "\n";
     stack->pop();
+    
+    delete stack;
 
     TQueue<int>* queue = new TQueue<int>();
 
